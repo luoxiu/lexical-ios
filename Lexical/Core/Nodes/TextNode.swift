@@ -237,6 +237,10 @@ open class TextNode: Node {
     try container.encode(SerializedTextNodeDetail.convertToSerializedTextNodeDetail(from: self.detail).rawValue, forKey: .detail)
     try container.encode(self.style, forKey: .style)
   }
+  
+  open var isTextEntity: Bool {
+    false
+  }
 
   override public func getTextPart() -> String {
     return getLatest().text
@@ -269,7 +273,7 @@ open class TextNode: Node {
     try getWritable().format.italic = isItalic
   }
 
-  public func canInsertTextAfter() -> Bool {
+  open func canInsertTextAfter() -> Bool {
     return true
   }
 
@@ -391,7 +395,7 @@ open class TextNode: Node {
     return getLatest()
   }
 
-  func canInsertTextBefore() -> Bool {
+  open func canInsertTextBefore() -> Bool {
     return true
   }
 
