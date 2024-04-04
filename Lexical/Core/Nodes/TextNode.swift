@@ -471,7 +471,7 @@ open class TextNode: Node {
       writableNode.text = firstPart
     }
     // Handle selection
-    let selection = try getSelection()
+    let selection = try getSelection(allowInvalidPositions: true)
 
     // Then handle all other parts
     var splitNodes = [writableNode]
