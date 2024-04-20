@@ -71,6 +71,10 @@ public class Editor: NSObject {
       }
     }
   }
+  
+  public var lexicalView: LexicalView? {
+    frontend as? LexicalView
+  }
 
   internal var infiniteUpdateLoopCount = 0
   // keyCounter is the next available node key to be used.
