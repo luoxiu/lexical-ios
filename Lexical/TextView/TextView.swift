@@ -341,7 +341,7 @@ protocol LexicalTextViewDelegate: NSObjectProtocol {
     showPlaceholderText()
   }
 
-  func showPlaceholderText() {
+  public func showPlaceholderText() {
     var shouldShow = false
     do {
       try editor.read {
@@ -371,7 +371,7 @@ protocol LexicalTextViewDelegate: NSObjectProtocol {
     addSubview(placeholderLabel)
   }
 
-  fileprivate func hidePlaceholderLabel() {
+  public func hidePlaceholderLabel() {
     placeholderLabel.isHidden = true
   }
 
