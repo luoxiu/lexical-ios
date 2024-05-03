@@ -36,6 +36,40 @@ protocol LexicalTextViewDelegate: NSObjectProtocol {
   fileprivate var textViewDelegate: TextViewDelegate = TextViewDelegate()
 
   // MARK: - Init
+  init(editor: Editor) {
+    let textStorage = TextStorage()
+    let layoutManager = LayoutManager()
+    layoutManagerDelegate = LayoutManagerDelegate()
+    layoutManager.delegate = layoutManagerDelegate
+
+    let textContainer = TextContainer(size: CGSize(width: 0, height: CGFloat.greatestFiniteMagnitude))
+    textContainer.widthTracksTextView = true
+
+    layoutManager.addTextContainer(textContainer)
+    textStorage.addLayoutManager(layoutManager)
+    
+    let featureFlags = editor.featureFlags
+    
+    self.editor = editor
+    textStorage.editor = editor
+    placeholderLabel = UILabel(frame: .zero)
+
+    useInputDelegateProxy = featureFlags.proxyTextViewInputDelegate
+    inputDelegateProxy = InputDelegateProxy()
+
+    super.init(frame: .zero, textContainer: textContainer)
+
+    if useInputDelegateProxy {
+      inputDelegateProxy.targetInputDelegate = self.inputDelegate
+      super.inputDelegate = inputDelegateProxy
+    }
+
+    delegate = textViewDelegate
+    textContainerInset = UIEdgeInsets(top: 8.0, left: 5.0, bottom: 8.0, right: 5.0)
+
+    setUpPlaceholderLabel()
+    registerRichText(editor: editor)
+  }
 
   init(editorConfig: EditorConfig, featureFlags: FeatureFlags) {
     let textStorage = TextStorage()

@@ -146,7 +146,7 @@ public class Editor: NSObject {
     resetEditor()
   }
 
-  convenience init(featureFlags: FeatureFlags, editorConfig: EditorConfig) {
+  public convenience init(featureFlags: FeatureFlags, editorConfig: EditorConfig) {
     self.init(editorConfig: editorConfig)
     self.featureFlags = featureFlags
   }

@@ -55,6 +55,32 @@ public extension LexicalViewDelegate {
   /// using the Lexical API.
   @objc public let textView: TextView
   let responderForNodeSelection: ResponderForNodeSelection
+  
+  @objc public init(editor: Editor, placeholderText: LexicalPlaceholderText? = nil) {
+    self.textView = TextView(editor: editor)
+    self.textView.showsVerticalScrollIndicator = false
+    self.textView.clipsToBounds = true
+    self.textView.accessibilityTraits = .staticText
+    self.placeholderText = placeholderText
+
+    guard let textStorage = textView.textStorage as? TextStorage else {
+      fatalError()
+    }
+    self.responderForNodeSelection = ResponderForNodeSelection(editor: textView.editor, textStorage: textStorage, nextResponder: textView)
+
+    super.init(frame: .zero)
+
+    self.textView.editor.frontend = self
+
+    self.textView.lexicalDelegate = self
+    if let placeholderText {
+      self.textView.setPlaceholderText(placeholderText.text, textColor: placeholderText.color, font: placeholderText.font)
+    }
+
+    addSubview(self.textView)
+
+    defaultViewMargins = textView.textContainerInset
+  }
 
   @objc public init(editorConfig: EditorConfig, featureFlags: FeatureFlags, placeholderText: LexicalPlaceholderText? = nil) {
     self.textView = TextView(editorConfig: editorConfig, featureFlags: featureFlags)
