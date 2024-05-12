@@ -15,8 +15,8 @@ import UIKit
  with a closure to build new Plugin objects, which would let us remove this restriction.
  */
 @objc public class EditorConfig: NSObject {
-  let theme: Theme
-  let plugins: [Plugin]
+  public let theme: Theme
+  public let plugins: [Plugin]
 
   @objc public init(theme: Theme, plugins: [Plugin]) {
     self.theme = theme
