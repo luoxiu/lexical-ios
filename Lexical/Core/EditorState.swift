@@ -18,7 +18,7 @@ public class EditorState: NSObject {
   internal var nodeMap: [NodeKey: Node] = [:]
   public var selection: BaseSelection?
 
-  override init() {
+  public override init() {
     let rootNode = RootNode()
     nodeMap[kRootNodeKey] = rootNode
   }
