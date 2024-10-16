@@ -8,11 +8,11 @@
 import UIKit
 
 /// A Lexical frontend that is optimised for consumption. No scrolling, selection, or editing.
-@objc public class LexicalReadOnlyView: UIView {
+@objc open class LexicalReadOnlyView: UIView {
 
   // MARK: - Init
 
-  override init(frame: CGRect) {
+  public override init(frame: CGRect) {
     super.init(frame: frame)
 
     let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
@@ -20,7 +20,7 @@ import UIKit
     self.clipsToBounds = false
   }
 
-  required init?(coder: NSCoder) {
+  public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
