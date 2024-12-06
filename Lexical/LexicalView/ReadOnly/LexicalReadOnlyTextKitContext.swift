@@ -76,7 +76,8 @@ internal class LexicalReadOnlySizeCache {
 
   @objc public var truncationString: String?
 
-  @objc weak var attachedView: LexicalReadOnlyView? {
+  @objc
+  public weak var attachedView: LexicalReadOnlyView? {
     didSet {
       if oldValue == attachedView {
         return
@@ -110,7 +111,7 @@ internal class LexicalReadOnlySizeCache {
     textStorage.editor = editor
   }
 
-  internal func viewDidLayoutSubviews(viewBounds: CGRect) {
+  public func viewDidLayoutSubviews(viewBounds: CGRect) {
     setTextContainerSize(forWidth: viewBounds.width, maxHeight: self.targetHeight)
   }
 
