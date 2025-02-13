@@ -346,6 +346,7 @@ protocol LexicalTextViewDelegate: NSObjectProtocol {
     showPlaceholderText()
   }
 
+  // CHANGE: update this to public
   public func showPlaceholderText() {
     var shouldShow = false
     do {
@@ -376,6 +377,7 @@ protocol LexicalTextViewDelegate: NSObjectProtocol {
     addSubview(placeholderLabel)
   }
 
+  // CHANGE: update this to public
   public func hidePlaceholderLabel() {
     placeholderLabel.isHidden = true
   }

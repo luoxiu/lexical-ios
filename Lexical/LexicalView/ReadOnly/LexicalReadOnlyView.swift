@@ -7,11 +7,14 @@
 
 import UIKit
 
+// CHANGE: update this to open
+
 /// A Lexical frontend that is optimised for consumption. No scrolling, selection, or editing.
 @objc open class LexicalReadOnlyView: UIView {
 
   // MARK: - Init
 
+  // CHANGE: update this to public
   public override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -19,7 +22,8 @@ import UIKit
     self.addGestureRecognizer(tapGestureRecognizer)
     self.clipsToBounds = false
   }
-
+  
+  // CHANGE: update this to public
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

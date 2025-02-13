@@ -15,7 +15,9 @@ import UIKit
  with a closure to build new Plugin objects, which would let us remove this restriction.
  */
 @objc public class EditorConfig: NSObject {
+  // CHANGE: update this to public
   public let theme: Theme
+  // CHANGE: update this to public
   public let plugins: [Plugin]
 
   @objc public init(theme: Theme, plugins: [Plugin]) {
@@ -146,6 +148,7 @@ public class Editor: NSObject {
     resetEditor()
   }
 
+  // CHANGE: update this to public
   public convenience init(featureFlags: FeatureFlags, editorConfig: EditorConfig) {
     self.init(editorConfig: editorConfig)
     self.featureFlags = featureFlags

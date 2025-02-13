@@ -12,6 +12,7 @@ public class TextStorage: NSTextStorage {
   internal typealias CharacterLocation = Int
   @objc internal var decoratorPositionCache: [NodeKey: CharacterLocation] = [:]
 
+  // CHANGE: update this to public
   public private(set) var backingAttributedString: NSMutableAttributedString
   var mode: TextStorageEditingMode
   weak var editor: Editor?

@@ -238,6 +238,7 @@ open class TextNode: Node {
     try container.encode(self.style, forKey: .style)
   }
   
+  // CHANGE: add `isTextEntity`
   open var isTextEntity: Bool {
     false
   }
@@ -273,6 +274,7 @@ open class TextNode: Node {
     try getWritable().format.italic = isItalic
   }
 
+  // CHANGE: update this to open
   open func canInsertTextAfter() -> Bool {
     return true
   }
@@ -395,6 +397,7 @@ open class TextNode: Node {
     return getLatest()
   }
 
+  // CHANGE: update this to open
   open func canInsertTextBefore() -> Bool {
     return true
   }
@@ -471,7 +474,7 @@ open class TextNode: Node {
       writableNode.text = firstPart
     }
     // Handle selection
-    let selection = try getSelection(allowInvalidPositions: true)
+    let selection = try getSelection()
 
     // Then handle all other parts
     var splitNodes = [writableNode]

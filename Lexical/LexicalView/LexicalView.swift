@@ -41,6 +41,8 @@ public extension LexicalViewDelegate {
 
 // MARK: -
 
+// CHANGE: update this to open
+
 /// A LexicalView is the view class that you interact with to use Lexical on iOS.
 ///
 /// In order to avoid the possibility of accidentally using UITextView methods that Lexical does not expect, we've
@@ -82,6 +84,7 @@ public extension LexicalViewDelegate {
     defaultViewMargins = textView.textContainerInset
   }
 
+  // CHANGE: update this to public
   public required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
